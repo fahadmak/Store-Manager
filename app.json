@@ -1,0 +1,21 @@
+{
+    "name": "LMS-Store-Manager",
+    "version": "0.1.0",
+    "scripts": {},
+    "env": {},
+    "formation": {
+        "web": {
+            "quantity": 1
+        }
+    },
+    "addons": [],
+    "buildpacks": [
+        {
+            "url": "heroku/nodejs"
+        }
+    ],
+    "engines": {
+        "npm": "6.4.1",
+        "node": "10.15.1"
+    }
+}
