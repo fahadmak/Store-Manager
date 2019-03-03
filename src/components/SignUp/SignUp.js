@@ -1,18 +1,19 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchLogin } from '../../actions/auth/authActions';
+import { fetchSignup } from '../../actions/auth/authActions';
 import '../../css/style.css';
 import logo from '../../images/logo.png'
 import { toast } from 'react-toastify';
 
-export class Login extends Component {
+export class SignUp extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            username: '',
+            name: '',
             password: '',
+            email: '',
             error: {
-                username: '',
+                name: '',
                 password: '',
                 error: ''
             },
@@ -27,7 +28,7 @@ export class Login extends Component {
         if (message) {
             this.setState({ message: message });
             history.push('/');
-            toast.success('You are now logged in');
+            toast.success('You are now signed up');
         }
     }
 
@@ -40,11 +41,12 @@ export class Login extends Component {
     handleSubmit = event => {
         event.preventDefault();
         const data = {
+            name: this.state.name,
             username: this.state.username,
             password: this.state.password
         };
         console.log(this.props)
-        this.props.fetchLogin(data);
+        this.props.fetchSignup(data);
     };
 
     render() {
@@ -57,6 +59,13 @@ export class Login extends Component {
                             <div className="login">
                                 <p id="merrortext" className="stl">{this.state.error && this.state.error.error}</p>
                                 <form className="sign" name="login_p" onSubmit={this.handleSubmit}>
+                                    <div className="box-section">
+                                        <div className="form-section">
+                                            <p id="uerrortext" className="stl">{this.state.error ? (this.state.error.name && "Minimum of 6 alphanumerics characters required") : ""}</p>
+                                            <input type="text" name="name" className="first" onChange={this.onChange} id="name" placeholder="First Name" />
+                                        </div>
+                                    </div>
+                                    <br />
                                     <div className="box-section">
                                         <div className="form-section">
                                             <p id="uerrortext" className="stl">{this.state.error ? (this.state.error.username && "Minimum of 6 alphanumerics characters required") : ""}</p>
@@ -72,7 +81,7 @@ export class Login extends Component {
                                     </div>
                                     <br />
                                     <div className="login-btns">
-                                        <button className="sb size" id="logs" value="Login">Login</button>
+                                        <button className="sb size" id="logs" value="Login">SignUp</button>
                                     </div>
                                     <br />
                                 </form>
@@ -92,5 +101,5 @@ export const mapStateToProps = state => ({
 
 export default connect(
     mapStateToProps,
-    { fetchLogin }
-)(Login);
+    { fetchSignup }
+)(SignUp);
