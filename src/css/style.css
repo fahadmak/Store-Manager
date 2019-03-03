@@ -13,6 +13,7 @@ html, body {
 }
 .wrapper {
     height: 100%;
+    margin: -74px auto;
 }
 .row {
     width: 95%;
@@ -418,6 +419,11 @@ span#exit {
     bottom: 5px;
     display: flex;
 }
+.textlink{
+    font-size: 13px;
+    color: white;
+    text-decoration: none;
+}
 /*create attenadant form*/
 .welcome {
     padding: 15px;
@@ -462,6 +468,20 @@ p#success {
 }
 .info {
     display: none;
+}
+.welcome_box{
+    border-radius: 0; 
+    box-shadow: -50px 0 200px -50px #504bff, 50px 0 200px -50px #4cfa63; 
+    height: 300px; 
+    width: 400px; 
+    margin: 100px auto; 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+.welcome_links{
+    display: flex;
+    justify-content: space-evenly
 }
 /*media queries*/
 @media(min-width: 768px) {
