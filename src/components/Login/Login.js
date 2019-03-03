@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchLogin } from '../../actions/auth/authActions';
+import { NavLink } from 'react-router-dom';
 import '../../css/style.css';
 import logo from '../../images/logo.png'
 import { toast } from 'react-toastify';
@@ -73,6 +74,7 @@ export class Login extends Component {
                                     <br />
                                     <div className="login-btns">
                                         <button className="sb size" id="logs" value="Login">Login</button>
+                                        <NavLink to="/login" activeClassName="active" className="textlink">Register here</NavLink>
                                     </div>
                                     <br />
                                 </form>

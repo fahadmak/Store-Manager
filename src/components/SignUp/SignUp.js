@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchSignup } from '../../actions/auth/authActions';
 import '../../css/style.css';
+import { NavLink } from 'react-router-dom';
 import logo from '../../images/logo.png'
 import { toast } from 'react-toastify';
 
@@ -82,6 +83,7 @@ export class SignUp extends Component {
                                     <br />
                                     <div className="login-btns">
                                         <button className="sb size" id="logs" value="Login">SignUp</button>
+                                        <NavLink to="/login" activeClassName="active" className="textlink">Have an account ?</NavLink>
                                     </div>
                                     <br />
                                 </form>
