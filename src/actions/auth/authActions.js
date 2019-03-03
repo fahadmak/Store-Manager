@@ -17,7 +17,6 @@ export const fetchLogin = (data) => (dispatch) => axios.post('https://store-chal
 
     }).
     catch((error) => {
-
         dispatch({
             type: type.FETCH_AUTH_FAILURE,
             error: error.response
@@ -40,7 +39,6 @@ export const fetchSignup = (data) => (dispatch) => axios.post('https://store-cha
 
     }).
     catch((error) => {
-
         dispatch({
             type: type.FETCH_AUTH_FAILURE,
             error: error.response
