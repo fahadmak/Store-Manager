@@ -1,34 +1,34 @@
 import React from 'react';
 import {shallow} from 'enzyme';
 import sinon from 'sinon';
-import {Login} from './Login';
-import {mapStateToProps} from "./Login";
+import {SignUp} from './SignUp';
+import {mapStateToProps} from "./SignUp";
 
-describe(`Login`, () => {
+describe(`SignUp`, () => {
 
     let wrapper;
-    const mockLogin = jest.fn(),
+    const mockSignUp = jest.fn(),
      historyMock = {push: jest.fn()};
 
     beforeEach(() => {
 
-        wrapper = shallow(<Login fetchLogin={mockLogin} history={historyMock} />);
+        wrapper = shallow(<SignUp fetchSignup={mockSignUp} history={historyMock} />);
 
 });
     afterEach(() => {
 
-        mockLogin.mock.calls = [];
+        mockSignUp.mock.calls = [];
 
 });
     describe('handlesubmit', () => {
 
-        it('should be call  fetchLogin with the name, username and password in the state as arguments', () => {
+        it('should be call  fetchSignUp with the name, username and password in the state as arguments', () => {
 
             wrapper.find('#username').simulate('change', {
                 target: {"username": "value"}
             });
             wrapper.find('form').simulate('submit', {preventDefault () { }});
-            expect(mockLogin.mock.calls.length).toEqual(1);
+            expect(mockSignUp.mock.calls.length).toEqual(1);
 
 });
         it('should will recieve signup props', () => {
@@ -46,8 +46,8 @@ describe('tests for <SignUpView> container', () => {
 
     it('call signup once', () => {
 
-        const spy = sinon.spy(Login.prototype, 'componentWillReceiveProps'),
-         wrapper = shallow(<Login
+        const spy = sinon.spy(SignUp.prototype, 'componentWillReceiveProps'),
+         wrapper = shallow(<SignUp
                 error={{
                     error: {
                         username: '',
@@ -73,7 +73,7 @@ describe('tests for <SignUpView> container', () => {
         const mockedState = {
             auth: {
                 error: {},
-                message: 'loggedIn'
+                message: 'signed up'
             }
         },
          state = mapStateToProps(mockedState);

@@ -1,14 +1,13 @@
 import React from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
-import '../css/toast.css';
+import {Route, BrowserRouter as Router} from 'react-router-dom';
 import Login from '../components/Login/Login';
+import SignUp from '../components/SignUp/SignUp';
 
-const Routes = () => (
-    <Router>
+const Routes = () => <Router>
         <div>
             <Route exact path="/login" component={Login} />
+            <Route exact path="/signup" component={SignUp} />
         </div>
-    </Router>
-);
+    </Router>;
 
-export default Routes; 
+export default Routes;

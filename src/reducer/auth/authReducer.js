@@ -6,8 +6,10 @@ const initialState = {
     message: null
 };
 
-export default function authReducer(state = initialState, action) {
+export default function authReducer (state = initialState, action) {
+
     switch (action.type) {
+
         case type.FETCH_AUTH_SUCCESS:
             return {
                 ...state,
@@ -19,10 +21,12 @@ export default function authReducer(state = initialState, action) {
             return {
                 ...state,
                 error: action.error,
-                success: false,
+                success: false
             };
 
         default:
             return state;
-    }
+
+}
+
 }

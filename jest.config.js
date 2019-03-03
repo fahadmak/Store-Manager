@@ -48,12 +48,15 @@ module.exports = {
      *source file paths, matched files will skip transformation
      */
     transformIgnorePatterns: ['<rootDir>/node_modules/'],
-    modulePathIgnorePatterns: ["<rootDir>/src/store/index.js", "<rootDir>/src/index.js",
-        "<rootDir>/src/reducers/rootReducer.js", "<rootDir>/src/routes/index.js"],
+    modulePathIgnorePatterns: ["<rootDir>/src/store/index.js",
+        "<rootDir>/src/index.js",
+        "<rootDir>/src/reducers/rootReducer.js",
+        "<rootDir>/src/routes/index.js"],
     moduleNameMapper: {
-        "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/assetsTransformer.js",
+        "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$":
+            "<rootDir>/assetsTransformer.js",
         "\\.(css|less|scss)$": "<rootDir>/assetsTransformer.js"
     },
     // Indicates whether each individual test should be reported during the run
-    verbose: false,
+    verbose: false
 };
