@@ -74,7 +74,7 @@ export class Login extends Component {
                                     <br />
                                     <div className="login-btns">
                                         <button className="sb size" id="logs" value="Login">Login</button>
-                                        <NavLink to="/login" activeClassName="active" className="textlink">Register here</NavLink>
+                                        <NavLink to="/signup" activeClassName="active" className="textlink">Register here</NavLink>
                                     </div>
                                     <br />
                                 </form>
