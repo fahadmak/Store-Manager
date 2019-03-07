@@ -27,7 +27,7 @@ export class Login extends Component {
         }
         if (message) {
             this.setState({ message: message });
-            history.push('/');
+            history.push('/home');
             toast.success('You are now logged in');
         }
     }

@@ -7,7 +7,7 @@ const App = () => (
             Welcome to The Store Manager
         </div>
         <div className="welcome_links">
-            <div className="welcome_msg"><NavLink to="/login">Login</NavLink></div>
+            {/* <div className="welcome_msg"><NavLink to="/login">Login</NavLink></div> */}
             <div className="welcome_msg"><NavLink to="/signup">Sign up</NavLink></div>
         </div>
     </div>

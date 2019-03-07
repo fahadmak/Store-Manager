@@ -28,8 +28,8 @@ export class SignUp extends Component {
         }
         if (message) {
             this.setState({ message: message });
-            history.push('/');
             toast.success('You are now signed up');
+            history.push('/');
         }
     }
 
@@ -83,7 +83,7 @@ export class SignUp extends Component {
                                     <br />
                                     <div className="login-btns">
                                         <button className="sb size" id="logs" value="Login">SignUp</button>
-                                        <NavLink to="/login" activeClassName="active" className="textlink">Have an account ?</NavLink>
+                                        <NavLink to="/" activeClassName="active" className="textlink">Have an account ?</NavLink>
                                     </div>
                                     <br />
                                 </form>
