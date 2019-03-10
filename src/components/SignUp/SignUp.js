@@ -24,13 +24,12 @@ export class SignUp extends Component {
     };
   }
 
-  componentWillMount() {
+  componentDidMount() {
     const token = localStorage.getItem('token')
     if (!token) {
       toast.error('Please login');
       console.log('print')
       this.props.history.push('/');
-
     }
   }
 
@@ -40,16 +39,15 @@ export class SignUp extends Component {
       toast.error('hello');
       console.log(error.data)
 
-      this.setState({ error: error.data.error });
+      this.setState({ error: error.data && error.data.error });
       console.log(this.state.error)
     }
     if (message) {
-      console.log(message)
       this.setState({ message: message.message });
-      console.log(this.state.message)
-      toast.success(message.message);
+      toast.success('You have successfully created an attendant');
     }
   }
+
   onChange = event => {
     this.setState({
       [event.target.name]: event.target.value
@@ -63,9 +61,9 @@ export class SignUp extends Component {
       username: this.state.username,
       password: this.state.password
     };
-    console.log(data)
     this.props.fetchSignup(data);
   };
+
   render() {
     return (
       <div className="wrapper">
@@ -104,7 +102,7 @@ export class SignUp extends Component {
                 <form className="sign" name="login_p" onSubmit={this.handleSubmit}>
                   <div className="box-section">
                     <div className="form-section">
-                      <p id="uerrortext" className="stl">{this.state.error.name ? "Name should contain at least 4 letters and a number" : ""}</p>
+                      <p id="uerrortext" className="stl">{this.state.error ? (this.state.error.name && "Name should contain at least 4 letters and a number") : ""}</p>
                       <input type="text" name="name" className="first" onChange={this.onChange} id="name" placeholder="First Name" />
                     </div>
                   </div>
