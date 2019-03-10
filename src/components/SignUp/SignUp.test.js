@@ -31,23 +31,31 @@ describe(`SignUp`, () => {
       expect(mockSignUp.mock.calls.length).toEqual(1);
 
     });
-    it('should will recieve signup props', () => {
-
-      wrapper.setProps({ message: 'your welcome' });
-      expect(wrapper.state('message')).toEqual('your welcome');
-
-    });
 
   });
 
 });
 
 describe('tests for <SignUpView> container', () => {
+  let props = {
+    name: '',
+    password: '',
+    email: '',
+    error: {
+      name: '',
+      username: '',
+      password: '',
+      error: ''
+    },
+    message: {}
+  };
+
 
   it('call signup once', () => {
 
     const spy = sinon.spy(SignUp.prototype, 'componentWillReceiveProps'),
-      wrapper = shallow(<SignUp
+      historyMock = { push: jest.fn() },
+      wrapper = shallow(<SignUp history={historyMock} {...props}
         error={{
           error: {
             username: '',
