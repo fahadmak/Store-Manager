@@ -32,7 +32,6 @@ export class Login extends Component {
         loading: false
       });
     }
-
     if (message) {
       this.setState({
         message: message,
@@ -59,8 +58,6 @@ export class Login extends Component {
     this.setState({ loading: true })
     this.props.fetchLogin(data);
   };
-
-
   render() {
     return (
       <div className="wrapper">
@@ -75,6 +72,7 @@ export class Login extends Component {
                     <div className="form-section">
                       <p id="uerrortext" className="stl">{this.state.error ? (this.state.error.username && "Username should contain at least 4 letters and a number") : ""}</p>
                       <input type="text" name="username" className="first" onChange={this.onChange} id="username" placeholder="User Name" />
+
                     </div>
                   </div>
                   <br />
@@ -85,6 +83,7 @@ export class Login extends Component {
                     </div>
                   </div>
                   <br />
+
                   {this.state.loading ? <Loader /> : null}
                   <div className="login-btns">
                     <button className="sb size" id="logs" value="Login">Login</button>
