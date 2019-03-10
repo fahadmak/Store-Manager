@@ -30,6 +30,7 @@ export class SignUp extends Component {
       toast.error('Please login');
       console.log('print')
       this.props.history.push('/');
+
     }
   }
 
@@ -49,7 +50,6 @@ export class SignUp extends Component {
       toast.success(message.message);
     }
   }
-
   onChange = event => {
     this.setState({
       [event.target.name]: event.target.value
@@ -66,7 +66,6 @@ export class SignUp extends Component {
     console.log(data)
     this.props.fetchSignup(data);
   };
-
   render() {
     return (
       <div className="wrapper">
