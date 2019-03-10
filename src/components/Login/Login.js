@@ -32,6 +32,7 @@ export class Login extends Component {
         loading: false
       });
     }
+
     if (message) {
       this.setState({
         message: message,
@@ -58,6 +59,7 @@ export class Login extends Component {
     this.setState({ loading: true })
     this.props.fetchLogin(data);
   };
+
 
   render() {
     return (

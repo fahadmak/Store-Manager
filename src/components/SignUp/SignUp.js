@@ -47,6 +47,7 @@ export class SignUp extends Component {
       this.setState({ message: message.message });
       console.log(this.state.message)
       toast.success(message.message);
+
     }
   }
 
@@ -66,6 +67,7 @@ export class SignUp extends Component {
     console.log(data)
     this.props.fetchSignup(data);
   };
+
 
   render() {
     return (

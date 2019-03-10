@@ -2,6 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 const App = () => (
+
   <div className="welcome_box">
     <div className="welcome_msg">
       Welcome to The Store Manager
