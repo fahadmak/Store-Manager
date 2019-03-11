@@ -5,6 +5,7 @@ import '../../css/style.css';
 import '../../css/toast.css';
 import { NavLink } from 'react-router-dom';
 import logo from '../../images/car.png'
+import bars from '../../images/bars.svg'
 import { toast } from 'react-toastify';
 
 export class SignUp extends Component {
@@ -43,6 +44,7 @@ export class SignUp extends Component {
       this.setState({ message: message.message });
       toast.success(message.message);
     }
+
   }
 
   onChange = event => {
@@ -53,10 +55,11 @@ export class SignUp extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
+    const { name, username, password } = this.state
     const data = {
-      name: this.state.name,
-      username: this.state.username,
-      password: this.state.password
+      name: name,
+      username: username,
+      password: password
     };
     this.props.fetchSignup(data);
   };
@@ -69,7 +72,7 @@ export class SignUp extends Component {
 
             <nav className="bar">
               <span className="nav-toggle" id="js-toggle">
-                <img className="mobile" src="../static/images/bars.svg" />
+                <img className="mobile" src={bars} />
               </span>
               <a href="#" className="logo font">SM</a>
               <ul className="main-nav" id="nav-menu">
@@ -100,21 +103,21 @@ export class SignUp extends Component {
                   <div className="box-section">
                     <div className="form-section">
                       <p id="uerrortext" className="stl">{this.state.error ? (this.state.error.name && "Name should contain at least 4 letters and a number") : ""}</p>
-                      <input type="text" name="name" className="first" onChange={this.onChange} id="name" placeholder="First Name" />
+                      <input autoComplete="off" type="text" name="name" className="first" onChange={this.onChange} id="name" placeholder="First Name" />
                     </div>
                   </div>
                   <br />
                   <div className="box-section">
                     <div className="form-section">
                       <p id="uerrortext" className="stl">{this.state.error ? (this.state.error.username && "Username should contain at least 4 letters and a number") : ""}</p>
-                      <input type="text" name="username" className="first" onChange={this.onChange} id="username" placeholder="User Name" />
+                      <input autoComplete="off" type="text" name="username" className="first" onChange={this.onChange} id="username" placeholder="User Name" />
                     </div>
                   </div>
                   <br />
                   <div className="box-section">
                     <div className="form-section">
                       <p id="perrortext" className="stl">{this.state.error ? (this.state.error.password && "Password should contain at least 4 letters and a number") : ""}</p>
-                      <input type="password" name="password" id="password" onChange={this.onChange} placeholder="Password" className="first" />
+                      <input autoComplete="off" type="password" name="password" id="password" onChange={this.onChange} placeholder="Password" className="first" />
                     </div>
                   </div>
                   <br />
