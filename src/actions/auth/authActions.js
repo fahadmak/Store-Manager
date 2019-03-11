@@ -8,12 +8,12 @@ const headers = {
 
 export const fetchLogin = (data) => (dispatch) => axios.post('https://store-challenge-3-api.herokuapp.com/api/v1/auth/login', data, { headers }).
     then((response) => {
-
         dispatch({
             type: type.FETCH_AUTH_SUCCESS,
             message: response.data
         });
         localStorage.setItem('token', response.data.access_token)
+        localStorage.setItem('admin', response.data.admin)
 
     }).
     catch((error) => {
