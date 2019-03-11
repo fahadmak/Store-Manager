@@ -24,8 +24,8 @@ export class Login extends Component {
     };
   }
   componentWillReceiveProps(nextProps) {
-    const { error, history, message } = nextProps;
-    console.log(nextProps)
+    const admin = localStorage.getItem('admin')
+    const { error, history, message } = nextProps
     if (error) {
       this.setState({
         error: error.data,
@@ -39,8 +39,12 @@ export class Login extends Component {
         loading: false,
         isButtonDisabled: false
       });
-      history.push('/signup');
+      localStorage.setItem('token', message.access_token)
+      localStorage.setItem('admin', message.admin)
       toast.success(this.state.message);
+      if (message.admin) {
+        history.push('/home');
+      }
     }
   }
 
@@ -57,10 +61,13 @@ export class Login extends Component {
       username: username,
       password: password
     };
+
     this.setState({
+      loading: true,
+      password: '',
+      username: '',
       isButtonDisabled: true
-    });
-    this.setState({ loading: true })
+    })
     this.props.fetchLogin(data);
   };
 
@@ -77,14 +84,14 @@ export class Login extends Component {
                   <div className="box-section">
                     <div className="form-section">
                       <p id="uerrortext" className="stl">{this.state.error ? (this.state.error.username && "Username should contain at least 4 letters and a number") : ""}</p>
-                      <input type="text" name="username" className="first" onChange={this.onChange} id="username" placeholder="User Name" />
+                      <input type="text" name="username" className="first" value={this.state.username} onChange={this.onChange} id="username" placeholder="User Name" />
                     </div>
                   </div>
                   <br />
                   <div className="box-section">
                     <div className="form-section">
                       <p id="perrortext" className="stl">{this.state.error ? (this.state.error.password && "Password should contain at least 4 letters and a number") : ""}</p>
-                      <input type="password" name="password" id="password" onChange={this.onChange} placeholder="Password" className="first" />
+                      <input type="password" name="password" id="password" value={this.state.password} onChange={this.onChange} placeholder="Password" className="first" />
                     </div>
                   </div>
                   <br />

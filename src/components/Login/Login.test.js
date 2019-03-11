@@ -22,7 +22,7 @@ describe(`Login`, () => {
   });
   describe('handlesubmit', () => {
 
-    it('should be call  fetchLogin with the name, username and password in the state as arguments', () => {
+    it('should be call  fetchLogin with the username and password in the state as arguments', () => {
 
       wrapper.find('#username').simulate('change', {
         target: { "username": "value" }
