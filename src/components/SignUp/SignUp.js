@@ -84,7 +84,7 @@ export class SignUp extends Component {
               </span>
               <a href="#" className="logo font">SM</a>
               <ul className="main-nav" id="nav-menu">
-                <li><a className="links" href="#">Products</a></li>
+                <li><a className="links" href="#">Staff</a></li>
                 <li><NavLink className="links" to='/' onClick={() => {
                   localStorage.removeItem('token')
                   // localStorage.removeItem('admin')
