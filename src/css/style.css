@@ -466,7 +466,7 @@ p#success {
     color: #00aeef;
 }
 #logs:disabled{ 
-    background:#86bb8a;
+    background:red;
 }
 /*View Sale Records*/
 .attendant{
