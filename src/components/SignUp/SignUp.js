@@ -35,16 +35,13 @@ export class SignUp extends Component {
 
   componentWillReceiveProps(nextProps) {
     const { error, history, message } = nextProps;
+    this.setState({ error: error.data && error.data.error });
     if (error) {
-      toast.error('hello');
-      console.log(error.data)
-
       this.setState({ error: error.data && error.data.error });
-      console.log(this.state.error)
-    }
-    if (message) {
+      toast.error(this.state.error)
+    } else {
       this.setState({ message: message.message });
-      toast.success('You have successfully created an attendant');
+      toast.success(message.message);
     }
   }
 
