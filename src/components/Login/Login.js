@@ -19,25 +19,28 @@ export class Login extends Component {
         error: ''
       },
       message: {},
-      loading: false
+      loading: false,
+      isButtonDisabled: false
     };
   }
   componentWillReceiveProps(nextProps) {
     const { error, history, message } = nextProps;
-
+    console.log(nextProps)
     if (error) {
       this.setState({
         error: error.data,
-        loading: false
+        loading: false,
+        isButtonDisabled: false
       });
     }
     if (message) {
       this.setState({
         message: message,
-        loading: false
+        loading: false,
+        isButtonDisabled: false
       });
       history.push('/signup');
-      toast.success(message.message);
+      toast.success(this.state.message);
     }
   }
 
@@ -54,6 +57,9 @@ export class Login extends Component {
       username: username,
       password: password
     };
+    this.setState({
+      isButtonDisabled: true
+    });
     this.setState({ loading: true })
     this.props.fetchLogin(data);
   };
@@ -84,7 +90,7 @@ export class Login extends Component {
                   <br />
                   {this.state.loading ? <Loader /> : null}
                   <div className="login-btns">
-                    <button className="sb size" id="logs" value="Login">Login</button>
+                    <button className="sb size" id="logs" disabled={this.state.isButtonDisabled} value="Login">Login</button>
                   </div>
                   <br />
                 </form>
