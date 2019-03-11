@@ -465,6 +465,9 @@ p#success {
     font-style: italic;
     color: #00aeef;
 }
+#logs:disabled{ 
+    background:#86bb8a;
+}
 /*View Sale Records*/
 .attendant{
     display: flex;
