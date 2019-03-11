@@ -36,8 +36,8 @@ export class Login extends Component {
         message: message,
         loading: false
       });
-      history.push('/home');
-      toast.success('You are now logged in');
+      history.push('/signup');
+      toast.success(message.message);
     }
   }
 
