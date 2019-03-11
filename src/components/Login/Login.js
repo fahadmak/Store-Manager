@@ -24,7 +24,6 @@ export class Login extends Component {
   }
   componentWillReceiveProps(nextProps) {
     const { error, history, message } = nextProps;
-    toast.success('You are now logged in');
 
     if (error) {
       this.setState({
