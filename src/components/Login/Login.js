@@ -24,8 +24,8 @@ export class Login extends Component {
     };
   }
   componentWillReceiveProps(nextProps) {
-    const { error, history, message } = nextProps;
-    console.log(nextProps)
+    const admin = localStorage.getItem('admin')
+    const { error, history, message } = nextProps
     if (error) {
       this.setState({
         error: error.data,
@@ -39,8 +39,14 @@ export class Login extends Component {
         loading: false,
         isButtonDisabled: false
       });
-      history.push('/signup');
+      localStorage.setItem('token', message.access_token)
+      localStorage.setItem('admin', message.admin)
       toast.success(this.state.message);
+      if (message.admin) {
+        history.push('/signup');
+      } else {
+        history.push('/home');
+      }
     }
   }
 

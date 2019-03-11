@@ -7,6 +7,7 @@ import { NavLink } from 'react-router-dom';
 import logo from '../../images/car.png'
 import bars from '../../images/bars.svg'
 import { toast } from 'react-toastify';
+import Loader from '../Loader/Loader'
 
 export class SignUp extends Component {
   constructor(props) {
@@ -21,30 +22,41 @@ export class SignUp extends Component {
         password: '',
         error: ''
       },
-      message: {}
+      message: {},
+      loading: false,
     };
   }
 
   componentDidMount() {
     const token = localStorage.getItem('token')
-    if (!token) {
+    const admin = localStorage.getItem('admin')
+    if (!token && !admin) {
       toast.error('Please login');
-      console.log('print')
       this.props.history.push('/');
     }
   }
+
 
   componentWillReceiveProps(nextProps) {
     const { error, history, message } = nextProps;
     this.setState({ error: error.data && error.data.error });
     if (error) {
+      this.setState({
+        error: error.data,
+        loading: false,
+        isButtonDisabled: false
+      });
+      if (error.data && error.data.error === `${this.state.username} already exists`) {
+        toast.error(error.data.error)
+      }
       this.setState({ error: error.data && error.data.error });
-      toast.error(this.state.error)
     } else {
-      this.setState({ message: message.message });
+      this.setState({
+        message: message,
+        loading: false,
+      })
       toast.success(message.message);
     }
-
   }
 
   onChange = event => {
@@ -61,6 +73,8 @@ export class SignUp extends Component {
       username: username,
       password: password
     };
+    this.setState({ loading: true })
+
     this.props.fetchSignup(data);
   };
 
@@ -76,8 +90,10 @@ export class SignUp extends Component {
               </span>
               <a href="#" className="logo font">SM</a>
               <ul className="main-nav" id="nav-menu">
-                <li><a className="links" href="#">Products</a></li>
-                <li><NavLink className="links" to='/' onClick={() => localStorage.removeItem('token')}>
+                <li><NavLink className="links" to='/' onClick={() => {
+                  localStorage.removeItem('token')
+                  localStorage.removeItem('admin')
+                }}>
                   Logout
                 </NavLink></li>
               </ul>
@@ -121,8 +137,9 @@ export class SignUp extends Component {
                     </div>
                   </div>
                   <br />
+                  {this.state.loading ? <Loader /> : null}
                   <div className="login-btns">
-                    <button className="sb size" id="logs" value="Login">SignUp</button>
+                    <button className="sb size" disabled={this.state.loading} id="logs" value="Login">SignUp</button>
                   </div>
                   <br />
                 </form>
