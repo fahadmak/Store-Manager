@@ -7,6 +7,7 @@ import { NavLink } from 'react-router-dom';
 import logo from '../../images/car.png'
 import bars from '../../images/bars.svg'
 import { toast } from 'react-toastify';
+import Loader from '../Loader/Loader'
 
 export class SignUp extends Component {
   constructor(props) {
@@ -21,7 +22,8 @@ export class SignUp extends Component {
         password: '',
         error: ''
       },
-      message: {}
+      message: {},
+      loading: false,
     };
   }
 
@@ -29,7 +31,6 @@ export class SignUp extends Component {
     const token = localStorage.getItem('token')
     if (!token) {
       toast.error('Please login');
-      console.log('print')
       this.props.history.push('/');
     }
   }
@@ -38,10 +39,16 @@ export class SignUp extends Component {
     const { error, history, message } = nextProps;
     this.setState({ error: error.data && error.data.error });
     if (error) {
-      this.setState({ error: error.data && error.data.error });
+      this.setState({
+        error: error.data && error.data.error,
+        loading: false,
+      });
       toast.error(this.state.error)
     } else {
-      this.setState({ message: message.message });
+      this.setState({
+        message: message.message,
+        loading: false,
+      });
       toast.success(message.message);
     }
 
@@ -61,6 +68,7 @@ export class SignUp extends Component {
       username: username,
       password: password
     };
+    this.setState({ loading: true })
     this.props.fetchSignup(data);
   };
 
@@ -121,8 +129,9 @@ export class SignUp extends Component {
                     </div>
                   </div>
                   <br />
+                  {this.state.loading ? <Loader /> : null}
                   <div className="login-btns">
-                    <button className="sb size" id="logs" value="Login">SignUp</button>
+                    <button className="sb size" disabled={this.state.loading} id="logs" value="Login">SignUp</button>
                   </div>
                   <br />
                 </form>
