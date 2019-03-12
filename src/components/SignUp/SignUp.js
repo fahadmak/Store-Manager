@@ -29,7 +29,8 @@ export class SignUp extends Component {
 
   componentDidMount() {
     const token = localStorage.getItem('token')
-    if (!token) {
+    const admin = localStorage.getItem('admin')
+    if (!token && !admin) {
       toast.error('Please login');
       this.props.history.push('/');
     }
@@ -41,15 +42,21 @@ export class SignUp extends Component {
     this.setState({ error: error.data && error.data.error });
     if (error) {
       this.setState({
-        error: error.data && error.data.error,
+
+        error: error.data,
         loading: false,
+        isButtonDisabled: false
       });
-      toast.error(this.state.error)
+      if (error.data && error.data.error === `${this.state.username} already exists`) {
+        toast.error(error.data.error)
+      }
+      this.setState({ error: error.data && error.data.error });
     } else {
       this.setState({
-        message: message.message,
+        message: message,
         loading: false,
-      });
+      })
+
       toast.success(message.message);
     }
   }
@@ -84,10 +91,9 @@ export class SignUp extends Component {
               </span>
               <a href="#" className="logo font">SM</a>
               <ul className="main-nav" id="nav-menu">
-                <li><a className="links" href="#">Staff</a></li>
                 <li><NavLink className="links" to='/' onClick={() => {
                   localStorage.removeItem('token')
-                  // localStorage.removeItem('admin')
+                  localStorage.removeItem('admin')
                 }}>
                   Logout
                 </NavLink></li>

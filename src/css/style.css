@@ -37,7 +37,7 @@ img.locate {
 .sign {
     margin: auto;
     width: 334px;
-    height: 422px;
+    height: 487px;
     background-image: linear-gradient(230deg, #3abcca6e, #2196f3bf);
 }
 #hidin{
@@ -465,7 +465,7 @@ p#success {
     font-style: italic;
     color: #00aeef;
 }
-#logs:disabled{ 
+.sb:disabled{ 
     background:red;
 }
 /*View Sale Records*/

@@ -12,9 +12,6 @@ export const fetchLogin = (data) => (dispatch) => axios.post('https://store-chal
             type: type.FETCH_AUTH_SUCCESS,
             message: response.data
         });
-        localStorage.setItem('token', response.data.access_token)
-        localStorage.setItem('admin', response.data.admin)
-
     }).
     catch((error) => {
         dispatch({
