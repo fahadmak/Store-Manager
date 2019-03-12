@@ -15,7 +15,7 @@ export class SignUp extends Component {
     this.state = {
       name: '',
       password: '',
-      email: '',
+      username: '',
       error: {
         name: '',
         username: '',
@@ -42,7 +42,6 @@ export class SignUp extends Component {
     this.setState({ error: error.data && error.data.error });
     if (error) {
       this.setState({
-
         error: error.data,
         loading: false,
         isButtonDisabled: false
@@ -56,7 +55,6 @@ export class SignUp extends Component {
         message: message,
         loading: false,
       })
-
       toast.success(message.message);
     }
   }
@@ -75,7 +73,13 @@ export class SignUp extends Component {
       username: username,
       password: password
     };
-    this.setState({ loading: true })
+    this.setState({
+      loading: true,
+      name: '',
+      password: '',
+      username: '',
+    })
+
     this.props.fetchSignup(data);
   };
 
@@ -120,14 +124,14 @@ export class SignUp extends Component {
                   <div className="box-section">
                     <div className="form-section">
                       <p id="uerrortext" className="stl">{this.state.error ? (this.state.error.name && "Name should contain at least 4 letters and a number") : ""}</p>
-                      <input autoComplete="off" type="text" name="name" className="first" onChange={this.onChange} id="name" placeholder="First Name" />
+                      <input autoComplete="off" type="text" value={this.state.name} name="name" className="first" onChange={this.onChange} id="name" placeholder="First Name" />
                     </div>
                   </div>
                   <br />
                   <div className="box-section">
                     <div className="form-section">
                       <p id="uerrortext" className="stl">{this.state.error ? (this.state.error.username && "Username should contain at least 4 letters and a number") : ""}</p>
-                      <input autoComplete="off" type="text" name="username" className="first" onChange={this.onChange} id="username" placeholder="User Name" />
+                      <input autoComplete="off" type="text" name="username" value={this.state.username} className="first" onChange={this.onChange} id="username" placeholder="User Name" />
                     </div>
                   </div>
                   <br />
