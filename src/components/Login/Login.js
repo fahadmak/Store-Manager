@@ -37,10 +37,11 @@ export class Login extends Component {
       this.setState({
         message: message,
         loading: false,
-        isButtonDisabled: false
       });
+
       localStorage.setItem('token', message.access_token)
       localStorage.setItem('admin', message.admin)
+
       toast.success(this.state.message);
       if (message.admin) {
         history.push('/signup');
@@ -63,9 +64,6 @@ export class Login extends Component {
       username: username,
       password: password
     };
-    this.setState({
-      isButtonDisabled: true
-    });
     this.setState({ loading: true })
     this.props.fetchLogin(data);
   };
@@ -96,7 +94,7 @@ export class Login extends Component {
                   <br />
                   {this.state.loading ? <Loader /> : null}
                   <div className="login-btns">
-                    <button className="sb size" id="logs" disabled={this.state.isButtonDisabled} value="Login">Login</button>
+                    <button className="sb size" id="logs" disabled={this.state.loading} value="Login">Login</button>
                   </div>
                   <br />
                 </form>

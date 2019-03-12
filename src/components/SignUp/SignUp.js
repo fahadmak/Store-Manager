@@ -42,6 +42,7 @@ export class SignUp extends Component {
     this.setState({ error: error.data && error.data.error });
     if (error) {
       this.setState({
+
         error: error.data,
         loading: false,
         isButtonDisabled: false
@@ -55,6 +56,7 @@ export class SignUp extends Component {
         message: message,
         loading: false,
       })
+
       toast.success(message.message);
     }
   }
@@ -74,7 +76,6 @@ export class SignUp extends Component {
       password: password
     };
     this.setState({ loading: true })
-
     this.props.fetchSignup(data);
   };
 
