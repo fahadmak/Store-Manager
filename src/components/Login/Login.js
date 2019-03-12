@@ -41,10 +41,8 @@ export class Login extends Component {
       });
       localStorage.setItem('token', message.access_token)
       localStorage.setItem('admin', message.admin)
-      toast.success(this.state.message);
-      if (message.admin) {
-        history.push('/home');
-      }
+      toast.success('You have logged in successfully');
+      history.push('/home');
     }
   }
 
