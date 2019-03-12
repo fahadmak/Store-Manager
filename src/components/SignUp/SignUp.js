@@ -30,8 +30,8 @@ export class SignUp extends Component {
   componentDidMount() {
     const token = localStorage.getItem('token')
     const admin = localStorage.getItem('admin')
-    if (!token) {
-      toast.error('Please login');
+    if (!admin && !token) {
+      toast.error('Please login as Admin');
       this.props.history.push('/');
     }
   }
@@ -138,7 +138,7 @@ export class SignUp extends Component {
                   <div className="box-section">
                     <div className="form-section">
                       <p id="perrortext" className="stl">{this.state.error ? (this.state.error.password && "Password should contain at least 4 letters and a number") : ""}</p>
-                      <input autoComplete="off" type="password" name="password" id="password" onChange={this.onChange} placeholder="Password" className="first" />
+                      <input autoComplete="off" type="password" name="password" value={this.state.password} id="password" onChange={this.onChange} placeholder="Password" className="first" />
                     </div>
                   </div>
                   <br />
