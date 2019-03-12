@@ -31,6 +31,7 @@ export class App extends Component {
             </nav>
           </div>
         </div>
+
         <div className="row">
           <div className="col-12">
             <h1>Store Manager</h1>
@@ -179,4 +180,7 @@ export class App extends Component {
       </div>)
   }
 };
+
 export default App;
+
+

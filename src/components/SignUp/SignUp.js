@@ -34,6 +34,7 @@ export class SignUp extends Component {
     if (!token) {
       toast.error('Please login as Admin');
       window.history.push('/');
+
     }
   }
 
