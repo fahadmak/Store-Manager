@@ -29,13 +29,9 @@ export class SignUp extends Component {
 
   componentDidMount() {
     const token = localStorage.getItem('token')
-    const admin = localStorage.getItem('admin')
-    console.log(admin)
     if (!token) {
       toast.error('Please login as Admin');
-
       this.props.history.push('/');
-
     }
   }
 
@@ -59,7 +55,7 @@ export class SignUp extends Component {
         loading: false,
       })
       toast.success(message.message);
-      history.push('/home');
+      history.push('/user');
     }
   }
 
