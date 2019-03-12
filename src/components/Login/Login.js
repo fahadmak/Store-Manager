@@ -54,6 +54,7 @@ export class Login extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
+    this.setState({ error: {} })
     const { username, password } = this.state
     const data = {
       username: username,
