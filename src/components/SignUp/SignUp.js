@@ -33,7 +33,7 @@ export class SignUp extends Component {
     console.log(admin)
     if (!token) {
       toast.error('Please login as Admin');
-      window.history.push('/');
+      this.props.history.push('/');
 
     }
   }
