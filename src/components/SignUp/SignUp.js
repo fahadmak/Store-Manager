@@ -31,7 +31,7 @@ export class SignUp extends Component {
     const token = localStorage.getItem('token')
     const admin = localStorage.getItem('admin')
     console.log(admin)
-    if (!token) {
+    if (!token && admin == false) {
       toast.error('Please login as Admin');
       this.props.history.push('/');
     }
